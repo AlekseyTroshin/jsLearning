@@ -1,0 +1,25 @@
+<!DOCTYPE html>
+<html>
+<head>
+	<title>1</title>
+	<meta charset="utf-8">
+</head>
+<body>
+
+<script>
+"use strict";
+
+function randomInteger(min, max) {
+	let rand = min + Math.random() * (max + 1 - min);
+	rand = Math.floor(rand);
+	return rand;
+}
+
+let arr = ["Яблоко", "Апельсин", "Груша", "Лимон"];
+
+console.log(arr[randomInteger(0, arr.length - 1)]);
+
+</script>
+
+</body>
+</html>

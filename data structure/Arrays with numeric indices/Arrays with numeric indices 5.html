@@ -13,9 +13,9 @@ let arr = [];
 
 let getNum = () => prompt('Enter number', '0');
 
-let isNumeric = (n) => !isNaN(parseFloat( n )) && isFinite(n);
+let isNumeric = ( n ) => !isNaN(parseFloat( n )) && isFinite(n);
 
-let sumArr = (arr) => {
+let sumArr = ( arr ) => {
 	let sum = 0;
 
 	for(let i = 0; i < arr.length; i++) {
@@ -28,7 +28,6 @@ let sumArr = (arr) => {
 while ( true ) {
 	let a = getNum();
 
-	console.log(a);
 	
 	if ( isNumeric(a) ) {
 		arr.push(+a);
@@ -37,7 +36,6 @@ while ( true ) {
 	}
 }
 
-console.log(arr);
 console.log(sumArr(arr));
 
 

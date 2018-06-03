@@ -9,7 +9,25 @@
 <script>
 "use strict";
 
+let obj = {
+  className: 'menu my menu menu'
+};
 
+let removeClass = (obj, name) => {
+	let clsName = obj.className.split(' ') ||  '';
+
+	for(let i= 0; i< clsName.length; i++) {
+		if(clsName[i] === name) {
+			clsName.splice(i, 1);
+			i--;
+		}
+	}
+
+	return obj.className = clsName.join(',');
+}
+
+removeClass(obj, 'menu');
+console.log( obj.className ); // 'my'
 
 </script>
 

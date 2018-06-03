@@ -9,7 +9,23 @@
 <script>
 "use strict";
 
+let arr = [5, 4, 3, 8, 0];
 
+let filterRange = ( arr , first , second ) => {
+	let testArray = [];
+	
+	for(let item of arr) {
+		if(item >= first && item <= second) {
+			testArray.push(item);
+		}
+	}
+
+	return testArray;
+}
+
+let filtered = filterRange(arr, 3, 5);
+
+console.log(filtered);
 
 </script>
 

@@ -9,7 +9,29 @@
 <script>
 "use strict";
 
+let arr = [];
 
+for(let i= 2; i<= 100; i++) {
+	arr.push(i);
+}
+
+let eratosthenesSieve = ( arr ) => {
+	let newArr = [];
+	let simplArr = [];
+	let nextNum = arr[0];
+
+	for(let j= 2; j < arr.length; j++) {
+		if(arr[j] % nextNum != 0) {
+			simplArr.push(j);
+		}
+	}
+
+	console.log( simplArr );
+}
+
+eratosthenesSieve( arr );
+
+// неправильное решение
 
 </script>
 

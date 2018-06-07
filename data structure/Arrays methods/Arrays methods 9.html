@@ -9,7 +9,42 @@
 <script>
 "use strict";
 
+var list = {
+  value: 1,
+  next: {
+    value: 2,
+    next: {
+      value: 3,
+      next: {
+        value: 4,
+        next: null
+      }
+    }
+  }
+};
 
+let printListRec = ( obj ) => {
+  console.log(obj.value);
+  if(obj.next === null) {
+    return obj;
+  }
+  
+  return funcList(obj.next);
+}
+
+// подсмотренно в решении
+let printListCuclo = ( obj ) => {
+  let tmp = obj;
+
+  while( obj ) {
+    console.log(obj.value);
+    obj = obj.next;
+  }
+
+}
+
+// printListRec(list);
+printListCuclo(list);
 
 </script>
 

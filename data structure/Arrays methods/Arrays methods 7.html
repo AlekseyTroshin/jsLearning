@@ -9,15 +9,15 @@
 <script>
 "use strict";
 
-var arr = [5, 2, 1, -10, 8];
+let arr = [1, 2, 3, 4, 5];
 
-let sortArr = (a, b) => {
-	return a < b;
+let randomFunc = (a, b) => {
+	return Math.random() - 0.5;
 }
 
-arr = arr.sort(sortArr);
+arr.sort(randomFunc);
 
-console.log( arr ); // 8, 5, 2, 1, -10
+console.log( arr );
 
 </script>
 

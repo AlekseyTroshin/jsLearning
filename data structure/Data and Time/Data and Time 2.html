@@ -1,0 +1,25 @@
+<!DOCTYPE html>
+<html>
+<head>
+	<title>1</title>
+	<meta charset="utf-8">
+</head>
+<body>
+
+<script>
+"use strict";
+
+let date = new Date(2012,0,3);  // 3 января 2012
+
+let getWeekDay = ( d ) => {
+	let arrNameDay = ['вс', 'пн', 'вт', 'ср', 'чт', 'пя', 'су'];
+
+	return arrNameDay[d.getDay()];
+}
+
+console.log( getWeekDay(date) ); 
+
+</script>
+
+</body>
+</html>

@@ -1,0 +1,69 @@
+
+
+<!DOCTYPE html>
+<html>
+<head>
+	<title>1</title>
+</head>
+<body>
+
+<script>
+	"use strict";
+
+
+	function User(fullName) {
+	  this.fullName = fullName;
+
+		Object.defineProperties(this, {
+			'firstName': {
+				get: function() {
+					return this.name || this.fullName.split(' ')[0];
+				},
+
+				set: function(value) {
+					let arrFullName = this.fullName.split(' ');
+					arrFullName[0] = value;
+					this.fullName = arrFullName.join(' ');
+					this.name = value || this.fullName.split(' ')[0];
+				}	
+			},
+			'lastName': {
+				get: function() {
+					return this.name || this.fullName.split(' ')[1];
+				},
+
+				set: function(value) {
+					let arrFullName = this.fullName.split(' ');
+					arrFullName[1] = value;
+					this.fullName = arrFullName.join(' ');
+					this.name = value || this.fullName.split(' ')[1];
+				}	
+			}
+		});
+	}
+
+
+
+
+
+	let vasya = new User("Василий Попкин");
+
+
+	// // чтение firstName/lastName
+	console.log( vasya.firstName ); // Василий
+	console.log( vasya.lastName ); // Попкин
+
+	console.log( vasya.fullName ); // Василий Сидоров
+	// запись в lastName
+	vasya.lastName = 'Сидоров';
+
+	console.log( vasya.fullName ); // Василий Сидоров
+
+	vasya.firstName = 'Аркашка';
+
+	console.log( vasya.fullName ); // Василий Сидоров
+
+</script>
+
+</body>
+</html>

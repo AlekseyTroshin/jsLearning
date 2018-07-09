@@ -23,7 +23,8 @@ function mul() { // перемножает аргументы: mul(2,3,4) = 24
 
 
 function applyAll(func) {
-	return func.apply(this, [].slice.call(arguments, 1));
+	let slice = [].slice.call(arguments, 1);
+	return func.apply(this, slice);
 }
 
 // Применить Math.max к аргументам 2, -2, 3

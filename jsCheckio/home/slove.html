@@ -1,0 +1,39 @@
+<!DOCTYPE html>
+<html>
+<head>
+	<title></title>
+</head>
+<body>
+
+<script>
+	
+function nonUniqueElements(data) {
+    let arr = [];
+    begin:
+    for(let i = 0; i < data.length; i++) {
+        for(let j = 0; j < data.length; j++) {
+            if(data[i] === data[j] && i != j) {
+                arr.push(data[i]);
+                continue begin;
+            } 
+        }
+        
+    }
+    
+    return arr;
+}
+
+console.log(nonUniqueElements([1, 2, 3, 1, 3]));
+console.log(nonUniqueElements([1, 2, 3, 4, 5]));
+console.log(nonUniqueElements([5, 5, 5, 5, 5]));
+console.log(nonUniqueElements([10, 9, 10, 10, 9, 8]));
+
+// console.log(nonUniqueElements([1, 2, 3, 1, 3]), [1, 3, 1, 3]);
+// console.log(nonUniqueElements([1, 2, 3, 4, 5]), []);
+// console.log(nonUniqueElements([5, 5, 5, 5, 5]), [5, 5, 5, 5, 5]);
+// console.log(nonUniqueElements([10, 9, 10, 10, 9, 8]), [10, 9, 10, 10, 9]);
+
+</script>
+
+</body>
+</html>

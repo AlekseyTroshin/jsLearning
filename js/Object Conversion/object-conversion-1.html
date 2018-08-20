@@ -11,14 +11,13 @@
 
 	// этот пример подсмотрел как делаеться
 	let sum = ( a ) => {
-		let currentSum = a;
 
 		let f = ( b ) => {
-			currentSum += b;
+			a += b;
 			return f;
 		}
 
-		f.toString = () => currentSum;
+		f.toString = () => a;
 
 		return f;
 	}

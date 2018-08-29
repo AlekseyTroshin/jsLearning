@@ -1,0 +1,87 @@
+<html>
+<head>
+	<script src="https://npmcdn.com/react@15.3.0/dist/react.js"></script>
+	<script src="https://npmcdn.com/react-dom@15.3.0/dist/react-dom.js"></script>
+	<script src="https://npmcdn.com/babel-core@5.8.38/browser.min.js"></script>
+	<script src="https://npmcdn.com/jquery@3.1.0/dist/jquery.min.js"></script>
+	<script src="https://npmcdn.com/remarkable@1.6.2/dist/remarkable.min.js"></script>
+</head>
+<body>
+
+<div id="content"></div>
+
+<script type="text/babel">
+
+	class App extends React.Component {
+		getText() {
+			return <p>Hello Function</p>;
+		}
+
+		getNum1() {
+			return 1;
+		}
+
+		getNum2() {
+			return 2;
+		}
+		render() {
+			let text1 = <p>Text111</p>;
+			let text2 = <p>Text222</p>;
+			let text3 = <p>Text333</p>;
+			let issue = <div>{text1}{text2}{text3}</div>;
+
+			let attrId = 'block';
+			let blockId = <div id={attrId}>{text1}</div>;
+
+			let attrClass = 'block';
+			let blockClass = <div className={attrClass}>{text2}</div>;
+
+			let blockClassStyle = <div style={ {fontSize: '30px', border: '1px solid blue', borderRadius: '30px'} }>{text2}</div>;
+
+			let flag = false;
+			let textIf;
+
+			if(flag) {
+				textIf = 'This is TRUE';
+			} else {
+				textIf = 'This is FALSE';
+			}
+
+			let blockIf = <p>{textIf}</p>
+
+			let arr =  ['a', 'b', 'c', 'd', 'e'];
+			arr = arr.map((item, index) => {
+				return <li key={index}>item</li>
+			});
+
+			let blockArr = <ul>{arr}</ul>
+
+			let num1 = this.getNum1();
+			let num2 = this.getNum2();
+
+			let blockFuncSum = <p>text {num1 + num2}</p>;
+
+			return (
+				<div>
+					{issue}
+					{blockId}
+					{blockClass}
+					{blockClassStyle}
+					{blockIf}
+					{blockArr}
+					{this.getText()}
+					{blockFuncSum};
+				</div>
+			);
+		}
+	}
+
+	ReactDOM.render(
+		<App />,
+		document.getElementById('content')
+	);
+	
+</script>
+
+</body>
+</html>﻿

@@ -1,0 +1,74 @@
+<html>
+<head>
+	<script src="https://npmcdn.com/react@15.3.0/dist/react.js"></script>
+	<script src="https://npmcdn.com/react-dom@15.3.0/dist/react-dom.js"></script>
+	<script src="https://npmcdn.com/babel-core@5.8.38/browser.min.js"></script>
+	<script src="https://npmcdn.com/jquery@3.1.0/dist/jquery.min.js"></script>
+	<script src="https://npmcdn.com/remarkable@1.6.2/dist/remarkable.min.js"></script>
+</head>
+<body>
+
+<div id="content"></div>
+
+<script type="text/babel">
+
+class App extends React.Component {
+	constructor() {
+		super();
+		
+		this.state = {
+			names: ['Masha', 'Sasha', 'Pasha', 'Dasha'],
+			addName: '',
+			value: 'add'
+		}
+
+		this.addItemInput = this.addItemInput.bind(this);
+		this.addItem = this.addItem.bind(this);
+	};
+
+	addItemInput(event) {
+		this.setState({value: event.target.value});
+	}
+
+	addItem(event) {
+		this.state.names.push(this.state.value);
+		this.setState({names: this.state.names});
+		event.preventDefault();
+	}
+
+	deleteItem(num) {
+		this.state.names.splice(num, 1);
+		this.setState({names: this.state.names});
+	}
+
+	render() {
+		let list = this.state.names.map((item, index) => {
+			return <li key={index}>
+				{item}
+				<button onClick={this.deleteItem.bind(this, index)}>x</button>
+			</li>;
+		});
+
+		return (
+			<div>
+				<form onSubmit={this.addItem}>
+					<input value={this.state.value} onChange={this.addItemInput} />
+					<input type='submit' value='addItem' />
+				</form>
+				<ul>
+					{list}
+				</ul>
+			</div>
+		);
+	}
+}
+
+ReactDOM.render(
+	<App />,
+	document.getElementById('content')
+);
+	
+</script>
+
+</body>
+</html>﻿

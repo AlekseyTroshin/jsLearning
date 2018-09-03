@@ -1,0 +1,53 @@
+<!DOCTYPE html>
+<html>
+<head>
+	<title></title>
+</head>
+<body>
+
+<script>
+	
+function Machine(power) {
+  this._enabled = false;
+
+  this.enable = function() {
+    this._enabled = true;
+  };
+
+  this.disable = function() {
+    this._enabled = false;
+  };
+
+}
+
+function CoffeeMachine(power) {
+	Machine.apply(this, arguments);
+
+	let stopTimer;
+
+	let parentDisable = this.disable;
+	this.disable = function() {
+		parentDisable.call(this);
+		clearTimeout(stopTimer);
+	}
+
+	this.run = function() {
+		if(!this._enabled) {
+			throw new Error('Coffee Machine turn off');
+		}
+
+		stopTimer = setTimeout(function() {
+			console.log('Coffe ready');
+		}, 1000);
+	}
+}
+
+var coffeeMachine = new CoffeeMachine(10000);
+coffeeMachine.enable();
+coffeeMachine.run();
+coffeeMachine.disable();
+
+</script>
+
+</body>
+</html>

@@ -1,0 +1,41 @@
+<!DOCTYPE html>
+<html>
+<head>
+	<title></title>
+</head>
+<body>
+
+<script>
+	
+function Machine(power) {
+  this._enabled = false;
+
+  this.enable = function() {
+    this._enabled = true;
+  };
+
+  this.disable = function() {
+    this._enabled = false;
+  };
+
+}
+
+function CoffeeMachine(power) {
+	Machine.apply(this, arguments);
+
+	this.run = function() {
+		return this._enabled ? 'Coffe ready' : 'You mast on CoffeMachine';
+	}
+}
+
+var coffeeMachine = new CoffeeMachine(10000);
+console.log(coffeeMachine.run());
+
+var coffeeMachine = new CoffeeMachine(10000);
+coffeeMachine.enable();
+console.log(coffeeMachine.run());
+
+</script>
+
+</body>
+</html>

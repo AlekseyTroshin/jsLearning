@@ -7,47 +7,56 @@
 
 <script>
 	
-function CoffeeMachine(power, capacity) {
-  var waterAmount = 0;
-  var waterVal = 0;
+function Machine(power) {
+  this._power = power;
+  this._enabled = false;
 
-  var WATER_HEAT_CAPACITY = 4200;
+  var self = this;
 
-  function getTimeToBoil() {
-    return waterAmount * WATER_HEAT_CAPACITY * 80 / power;
-  }
-
-  this.addWater = (val) => {
-  	waterVal += val;
-  	this.setWaterAmount(waterVal);
-  }
-
-  this.setWaterAmount = function(amount) {
-    if (amount < 0) {
-      throw new Error("Значение должно быть положительным");
-    }
-    if (amount > capacity) {
-      throw new Error("Нельзя залить больше, чем " + capacity);
-    }
-
-    waterAmount = amount;
+  this.enable = function() {
+    self._enabled = true;
   };
 
-  function onReady() {
-    console.log( 'Кофе готов!' );
-  }
-
-  this.run = function() {
-    setTimeout(onReady, getTimeToBoil());
+  this.disable = function() {
+    self._enabled = false;
   };
-
 }
 
-var coffeeMachine = new CoffeeMachine(100000, 400);
-coffeeMachine.addWater(200);
-coffeeMachine.addWater(100);
-coffeeMachine.addWater(300); // Нельзя залить больше, чем 400
-coffeeMachine.run();
+function Fridge() {
+	Machine.apply(this, arguments);
+
+	let food = [];
+	let power = this._power/100;
+
+	this.addFood = (...args) => {
+		if(!this._enabled) {
+			throw new Error('no no no');
+		} else if(food.length + args.length > power) {
+			throw new Error('lot of Eat');
+		} else {
+			food.push(...args);
+		}
+	}
+
+	this.getFood = () => {
+		let newFood = food.slice();
+		return newFood;
+	}
+}
+
+var fridge = new Fridge(500);
+fridge.enable();
+fridge.addFood("котлета");
+fridge.addFood("сок", "варенье");
+
+var fridgeFood = fridge.getFood();
+console.log( fridgeFood ); // котлета, сок, варенье
+
+// добавление элементов не влияет на еду в холодильнике
+fridgeFood.push("вилка", "ложка");
+
+console.log( fridge.getFood() ); // внутри по-прежнему: котлета, сок, варенье
+
 
 </script>
 

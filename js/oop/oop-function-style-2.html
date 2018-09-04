@@ -7,28 +7,45 @@
 
 <script>
 	
-function User() {
-	let firstName;
-	let surName;
+function Machine(power) {
+  this._enabled = false;
 
-	this.setFirstName = (name) => {
-		firstName = name;
+  this.enable = function() {
+    this._enabled = true;
+  };
+
+  this.disable = function() {
+    this._enabled = false;
+  };
+
+}
+
+function CoffeeMachine(power) {
+	Machine.apply(this, arguments);
+
+	let stopTimer;
+
+	let parentDisable = this.disable;
+	this.disable = function() {
+		parentDisable.call(this);
+		clearTimeout(stopTimer);
 	}
 
-	this.setSurname = (surname) => {
-		surName = surname;
-	}
+	this.run = function() {
+		if(!this._enabled) {
+			throw new Error('Coffee Machine turn off');
+		}
 
-	this.getFullName = () => {
-		return `${firstName} ${surName}`;
+		stopTimer = setTimeout(function() {
+			console.log('Coffe ready');
+		}, 1000);
 	}
 }
 
-var user = new User();
-user.setFirstName("Петя");
-user.setSurname("Иванов");
-
-console.log( user.getFullName() ); // Петя Иванов
+var coffeeMachine = new CoffeeMachine(10000);
+coffeeMachine.enable();
+coffeeMachine.run();
+coffeeMachine.disable();
 
 </script>
 

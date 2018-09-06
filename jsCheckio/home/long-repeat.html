@@ -8,17 +8,32 @@
 <script>
 	
 function longRepeat(line) {
-    let arr = [];
-    let count = 1;
-    for(let i of line) {
-    	console.log(i);
+	let count = 1;
+	let num = 1;
+	if(line.length) {
+	   
+	    let char;
+	    for(let i of line) {
+	    	count += 1;
+	    	if(char === i && count >= 1) {
+	    		char === i;
+	    		num = count;
+	    		
+	    	} else {
+	    		char = i;
+	    		count = 1;
+	    	}
+	    }
+    } else {
+    	return 0;
     }
 
-    return 0;
+    return num;
 }
 
-longRepeat('sdsffffse');
-longRepeat('ddvvrwwwrggg');
+// console.log(longRepeat('sdsffffse'));
+// console.log(longRepeat('ddvvrwwwrggg'));
+console.log(longRepeat("abababa"));
 
 </script>
 

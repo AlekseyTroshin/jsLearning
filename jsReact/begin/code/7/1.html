@@ -16,13 +16,24 @@ class App extends React.Component {
 	constructor() {
 		super();
 		
+		this.state = {
+			value: ''
+		}
 	};
+
+	textareaChange(event) {
+		this.setState({value: event.target.value});
+	}
 
 	render() {
 
+		let textArea = <textarea value={this.state.value} onChange={this.textareaChange.bind(this)} />
+		let text = <p>{this.state.value}</p>
+
 		return (
 			<div>
-				
+				{textArea}
+				{text}
 			</div>
 		);
 	}

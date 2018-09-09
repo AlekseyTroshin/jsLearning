@@ -1,0 +1,71 @@
+<!DOCTYPE html>
+<html>
+<head>
+	<title></title>
+</head>
+<body>
+
+<script>
+	
+function romanNumerals(number) {
+	let numberStr = number + '';
+    let numberArr = numberStr.split('');
+    let arrLength = numberArr.length - 1;
+	let arrReverse = numberArr.reverse();
+	let arrLetters = transformArr(arrReverse, arrLength);
+
+    return arrLetters;
+}
+
+function transformArr(arr, num) {
+	let str = '';
+	let arrObj = [];
+
+	for(let i = num; i >= 0; i--) {
+		str += transformInLetter(i, arr[i]);
+	}
+
+	return str;
+}
+
+function transformInLetter(index, num) {
+	num = +num;
+	let one = '';
+	let two = '';
+	let three = '';
+	let letters;
+
+	index === 1 ? (one = 'L', two = 'X', three = 'C') : index === 2 
+		? (one = 'D', two = 'C', three = 'M') : index === 3
+		? (one = '', two = 'M', three = '') : (one = 'V', two = 'I', three = 'X');
+
+	switch(num) {
+		case 1 : letters = two; break;
+		case 2 : letters = new Array(2 + 1).join(two); break;
+		case 3 : letters = three = new Array(3 + 1).join(two); break;
+		case 4 : letters = two + one; break;
+		case 5 : letters = one; break;
+		case 6 : letters = one + two; break;
+		case 7 : letters = one + new Array(2 + 1).join(two); break;
+		case 8 : letters = one + new Array(3 + 1).join(two); break;
+		case 9 : letters = two + three; break;
+		case 0 : letters = ''; break;
+	}
+
+	return letters;
+}
+
+
+console.log(romanNumerals(10)); // == 'VI'
+console.log(romanNumerals(100)); // == 'VI'
+console.log(romanNumerals(1000)); // == 'VI'
+// console.log(romanNumerals(6)); // == 'VI'
+// console.log(romanNumerals(76)); // == 'LXXVI'
+// console.log(romanNumerals(13)); // == 'XIII'
+// console.log(romanNumerals(44)); // == 'XLIV'
+// console.log(romanNumerals(3999)); // == 'MMMCMXCIX'
+
+</script>
+
+</body>
+</html>

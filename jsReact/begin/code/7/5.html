@@ -16,13 +16,50 @@ class App extends React.Component {
 	constructor() {
 		super();
 		
+		this.state = {
+			option : 'option1'
+		}
 	};
+
+	handleRadioChange(event) {
+		this.setState({option: event.target.value})
+	}
 
 	render() {
 
 		return (
 			<div>
-				
+				<label>
+					<input 
+						name='lang'
+						type='radio'
+						value='option1'
+						checked={this.state.option == 'option1'}
+						onChange={this.handleRadioChange.bind(this)}
+					/>
+					1
+				</label>
+				<label>
+					<input 
+						name='lang'
+						type='radio'
+						value='option2'
+						checked={this.state.option == 'option2'}
+						onChange={this.handleRadioChange.bind(this)}
+					/>
+					2
+				</label>
+				<label>
+					<input 
+						name='lang'
+						type='radio'
+						value='option3'
+						checked={this.state.option == 'option3'}
+						onChange={this.handleRadioChange.bind(this)}
+					/>
+					3
+				</label>
+				<p>{this.state.option}</p>
 			</div>
 		);
 	}

@@ -16,13 +16,30 @@ class App extends React.Component {
 	constructor() {
 		super();
 		
+		this.state = {
+			checkedInput : true,
+		}
 	};
 
+	handleCheckboxChange() {
+		this.setState({checkedInput : !this.state.checkedInput});
+	}
+
 	render() {
+		let text;
+
+		if(this.state.checkedInput) {
+			text = <p>Hello I here</p>;
+		}
 
 		return (
 			<div>
-				
+				<input 
+					type="checkbox"
+					checked={this.state.checkedInput}
+					onChange={this.handleCheckboxChange.bind(this)}
+				/>
+				{text}				
 			</div>
 		);
 	}

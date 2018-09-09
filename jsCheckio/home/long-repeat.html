@@ -10,9 +10,8 @@
 function longRepeat(line) {
 	let count = 1;
 	let num = 1;
+	let char;
 	if(line.length) {
-	   
-	    let char;
 	    for(let i of line) {
 	    	count += 1;
 	    	if(char === i && count >= 1) {
@@ -31,8 +30,8 @@ function longRepeat(line) {
     return num;
 }
 
-// console.log(longRepeat('sdsffffse'));
-// console.log(longRepeat('ddvvrwwwrggg'));
+console.log(longRepeat('sdsffffse'));
+console.log(longRepeat('ddvvrwwwrggg'));
 console.log(longRepeat("abababa"));
 
 </script>

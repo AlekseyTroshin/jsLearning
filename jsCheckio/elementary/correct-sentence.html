@@ -1,0 +1,23 @@
+<!DOCTYPE html>
+<html>
+<head>
+	<title></title>
+</head>
+<body>
+
+<script>
+	
+function correctSentence(text) {
+    return text[0].toUpperCase() + text.slice(1) + (text[text.length - 1] != '.' ? '.' : '');
+}
+
+
+correctSentence("greetings, friends");
+correctSentence("Greetings, friends");
+correctSentence("Greetings, friends.");
+correctSentence("hi");
+correctSentence("welcome to New York");
+
+</script>
+</body>
+</html>

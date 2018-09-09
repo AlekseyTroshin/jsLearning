@@ -16,13 +16,36 @@ class App extends React.Component {
 	constructor() {
 		super();
 		
+		this.state = {
+			value : 0,
+			language : [
+				'html',
+				'css',
+				'javascript',
+				'php'
+			]
+		}
 	};
+
+	handleSelectChange(event) {
+		this.setState({value: event.target.value});
+	}
 
 	render() {
 
+		let options = this.state.language.map((item, index) => {
+			return <option key={index} value={index}>{item}</option>
+		})
+
 		return (
 			<div>
-				
+				<select
+					value={this.state.value}
+					onChange={this.handleSelectChange.bind(this)}
+				>
+					{options}
+				</select>
+				<p>Your choice : {this.state.language[this.state.value]}</p>
 			</div>
 		);
 	}

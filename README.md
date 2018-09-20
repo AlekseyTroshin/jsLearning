@@ -7,4 +7,4 @@
 
 ------
 
-в code начало обучения на реакт , все материалы взяты с этого ресурса http://code.mu/books/advanced/javascript/react/
+в jsReact начало обучения на реакт , все материалы взяты с этого ресурса http://code.mu/books/advanced/javascript/react/

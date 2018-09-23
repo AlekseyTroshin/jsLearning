@@ -9,20 +9,20 @@
 "use strict";
 
 function Clock(options) {
-	this._template = {};
+	this._newTemplate = {};
 	let dateOptions = {'Y' : 'year','M' : 'month','D' : 'day','h' : 'hour','m' : 'minute','s' : 'second'};
 	let newDateOptions = {};
 
-	for(let i of options) {
+	for(let i of options.template) {
 		if(dateOptions[i]) {
-			this._template[dateOptions[i]] = '2-digit';
+			this._newTemplate[dateOptions[i]] = '2-digit';
 		}
 	}
 }
 
 Clock.prototype._render = function() {
 	let date = new Date();
-	let time = date.toLocaleString(undefined, this._template);
+	let time = date.toLocaleString(undefined, this._newTemplate);
 
 	console.log(time);
 }
@@ -40,7 +40,24 @@ Clock.prototype.stop = function() {
 }
 
 
-let clock = new Clock('h:m:s');
+function ModeClock(options) {
+	Clock.apply(this, arguments);
+
+	this._precision = options.precision;
+}
+
+ModeClock.prototype = Object.create(Clock.prototype);
+ModeClock.prototype.constructor = ModeClock;
+
+ModeClock.prototype.start = function() {
+	let self = this;
+	self._render();
+	this._stopTimer = setInterval(function() {
+		self._render();
+	}, this._precision);
+}
+
+let clock = new ModeClock({template: 'h:m:s', precision: 10000});
 
 clock.start();
 

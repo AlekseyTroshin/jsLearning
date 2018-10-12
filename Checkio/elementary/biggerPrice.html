@@ -1,0 +1,44 @@
+<!DOCTYPE html>
+<html>
+<head>
+	<title></title>
+</head>
+<body>
+
+<script>
+	
+"use strict";
+
+function biggerPrice(limit, data) {
+    let arr = data.sort(sortPrice);
+    let newArr = arr.splice(0, limit);
+    return newArr;
+}
+
+function sortPrice(a, b) {
+	return a.price < b.price;
+}
+
+var one = biggerPrice(2, [
+        {"name": "bread", "price": 100},
+        {"name": "wine", "price": 138},
+        {"name": "meat", "price": 15},
+        {"name": "water", "price": 1}
+    ]);
+console.log(one);
+	// , [
+	//        {"name": "wine", "price": 138},
+	//        {"name": "bread", "price": 100}
+	//    ])
+var one = biggerPrice(1, [
+        {"name": "pen", "price": 5},
+        {"name": "whiteboard", "price": 170}
+    ]); 
+console.log(one);
+	// [{"name": "whiteboard", "price": 170}])
+
+
+</script>
+
+</body>
+</html>

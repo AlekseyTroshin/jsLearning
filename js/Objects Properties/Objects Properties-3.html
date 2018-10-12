@@ -1,0 +1,37 @@
+<!DOCTYPE html>
+<html>
+<head>
+	<title>1</title>
+	<meta charset="utf-8">
+</head>
+<body>
+
+<script>
+"use strict";
+
+let salaries = {
+  "Вася": 100,
+  "Петя": 300,
+  "Даша": 250
+};
+
+let bigPay = ( obj ) => {
+	let num = 0;
+	let name = '';
+	
+	for ( let item in obj ) {
+		if ( obj[item] > num ) {
+			num = obj[item];
+			name = item;
+		}
+	}
+
+	return name;
+}
+
+console.log(bigPay(salaries));
+
+</script>
+
+</body>
+</html>

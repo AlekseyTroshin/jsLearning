@@ -1,0 +1,65 @@
+<!DOCTYPE html>
+<html>
+<head>
+	<title>most-wanted-letter</title>
+</head>
+<body>
+
+<script>
+"use strict";
+
+function mostWanted(data) {
+	data = isLetter(data.toLowerCase().split('').sort());
+	let arr = [];
+	let arrChar = [];
+	let arrNum = [];
+	let count = 0;
+	let char;
+	let max;
+
+	for(let i of data) {
+		if(arr[i]) {
+			arr[i] += 1;
+		} else {
+			arr[i] = 1;
+		}
+	}
+
+	for (let i in arr) {
+		arrChar[count] = i;
+		arrNum[count] = arr[i];
+		count++;
+	}
+
+	max = Math.max.apply(this, arrNum);
+
+	if(arr[arrChar[0]] === arrNum[arrNum.indexOf(max)]) {
+		char = arrChar[0];
+	} else {
+		char = arrChar[arrNum.indexOf(max)]; 
+	}
+
+    return char;
+}
+
+
+function isLetter(str) {
+	let arr = [];
+	for(let char of str) {
+		if(char.length === 1 && char.match(/[a-z]/i)) {
+			arr.push(char);
+		}
+	}
+	return arr;
+}
+
+console.log(mostWanted("Hello World!"));
+console.log(mostWanted("How do you do?"));
+console.log(mostWanted("One"));
+console.log(mostWanted("Oops!"));
+console.log(mostWanted("AAaooo!!!!"));
+
+</script>
+
+</body>
+</html>

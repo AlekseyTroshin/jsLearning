@@ -1,0 +1,33 @@
+<!DOCTYPE html>
+<html>
+<head>
+	<title>1</title>
+	<meta charset="utf-8">
+</head>
+<body>
+
+<script>
+"use strict";
+
+let arr = [5, 3, 8, 1];
+
+let filterRangeInPlace = (arr, one, two) => {
+	let newArr = [];
+
+	for(let i of arr) {
+		if(i >= one && i <= two) {
+			newArr.push(i);
+		}
+	}
+
+	return newArr;
+}
+
+let answer = filterRangeInPlace(arr, 1, 4); // удалены числа вне диапазона 1..4
+
+console.log( answer );
+
+</script>
+
+</body>
+</html>

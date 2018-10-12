@@ -1,0 +1,34 @@
+<!DOCTYPE html>
+<html>
+<head>
+	<title>1</title>
+	<meta charset="utf-8">
+</head>
+<body>
+
+<script>
+"use strict";
+
+let camelize = (str) => {
+	let newStr = '';
+
+	for(let i= 0; i< str.length; i++) {
+		if(str[i] === '-') {
+			i++;
+			newStr += str[i].toUpperCase();
+		} else {
+			newStr += str[i];
+		}
+	}
+
+	return newStr;
+}
+
+console.log(camelize("background-color") == 'backgroundColor');
+console.log(camelize("list-style-image") == 'listStyleImage');
+console.log(camelize("-webkit-transition") == 'WebkitTransition');
+
+</script>
+
+</body>
+</html>

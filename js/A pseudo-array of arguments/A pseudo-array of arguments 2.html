@@ -1,0 +1,33 @@
+<!DOCTYPE html>
+<html>
+<head>
+	<title>1</title>
+	<meta charset="utf-8">
+</head>
+<body>
+
+<script>
+"use strict";
+
+function sum() {
+	if(!arguments.length) return 0;
+
+	let sumArguments = 0;
+
+	for(let i of arguments) {
+		sumArguments += i;
+	}
+
+	return sumArguments;
+}
+
+console.log(sum() == 0);
+console.log(sum(1) == 1);
+console.log(sum(1, 2) == 3);
+console.log(sum(1, 2, 3) == 6);
+console.log(sum(1, 2, 3, 4) == 10);
+
+</script>
+
+</body>
+</html>

@@ -1,0 +1,82 @@
+<!DOCTYPE html>
+<html>
+<head>
+	<meta charset="utf-8">
+	<title></title>
+	<script src="https://npmcdn.com/react@15.3.0/dist/react.js"></script>
+	<script src="https://npmcdn.com/react-dom@15.3.0/dist/react-dom.js"></script>
+	<script src="https://npmcdn.com/babel-core@5.8.38/browser.min.js"></script>
+	<script src="https://npmcdn.com/jquery@3.1.0/dist/jquery.min.js"></script>
+	<script src="https://npmcdn.com/remarkable@1.6.2/dist/remarkable.min.js"></script>
+</head>
+<body>
+
+<div id="content"></div>
+
+<script type="text/babel">
+'use strict';
+
+class App extends React.Component {
+
+    getText() {
+        return 'Metod Text';
+    };
+
+    getText1() {
+        return 1;
+	}
+
+	getText2() {
+        return 2;
+	}
+
+    render() {
+
+        const text = 'textText';
+		const text2 = <p>textText2</p>;
+		const text3 = <div><p>text +++</p><p>!!!!</p></div>;
+		const text4 = <p>text !!!</p>;
+		const attr = 'attr';
+		const classA = 'classA';
+		const css = {
+		    color: 'green',
+			border: '1px solid black',
+			borderRadius: '5px',
+			padding: '10px'
+		};
+		const arr = ['a', 'b', 'c', 'd', 'e'];
+		const listArr = arr.map((item, index) => {
+			return <li key={index}>item</li>;
+		});
+
+        const metodA = this.getText();
+
+        return (
+			<div>
+				<p>текст</p>
+				<p>{text}</p>
+				{text2}
+				{text3}
+				{text4}
+				<p id={attr}>attr</p>
+				<p className={classA}>class</p>
+				<div style={css}>hello</div>
+				<ul style={css}>
+					{listArr}
+				</ul>
+				<p>{metodA}</p>
+				<p>{this.getText1() + this.getText2()}</p>
+			</div>
+		);
+	}
+}
+
+ReactDOM.render(
+	<App />,
+    document.getElementById('content')
+);
+
+</script>
+
+</body>
+</html>

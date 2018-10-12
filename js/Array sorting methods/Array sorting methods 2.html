@@ -1,0 +1,32 @@
+<!DOCTYPE html>
+<html>
+<head>
+	<title>1</title>
+	<meta charset="utf-8">
+</head>
+<body>
+
+<script>
+"use strict";
+
+let arr = [ 1, 2, 3, 4, 5 ];
+let arr2 = [-2,-1,0,1];
+
+let getSums = (arr) => {
+	let result = [];
+
+	let totalSum = arr.reduce(function(sum, i) {
+		result.push(i);
+		return sum + i;
+	});
+
+	return result;
+}
+
+console.log(getSums( arr ));
+console.log(getSums( arr2 ));
+
+</script>
+
+</body>
+</html>

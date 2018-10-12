@@ -1,0 +1,29 @@
+<!DOCTYPE html>
+<html>
+<head>
+	<title>1</title>
+	<meta charset="utf-8">
+</head>
+<body>
+
+<script>
+"use strict";
+
+let calculator = {
+	read: ()=> {
+		this.one = +prompt('','');
+		this.two = +prompt('','');
+	},
+	
+	sum: () => this.one + this.two,
+	mul: () => this.one * this.two
+}
+
+calculator.read();
+console.log( calculator.sum() );
+console.log( calculator.mul() );
+
+</script>
+
+</body>
+</html>

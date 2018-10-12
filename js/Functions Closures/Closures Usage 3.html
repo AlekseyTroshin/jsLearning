@@ -1,0 +1,39 @@
+<!DOCTYPE html>
+<html>
+<head>
+	<title>1</title>
+	<meta charset="utf-8">
+</head>
+<body>
+
+<script>
+"use strict";
+
+function makeBuffer() {
+  let strPlus = '';
+
+  function func( str ) {
+  	return arguments.length ? strPlus += str : strPlus;
+  }
+
+  func.clear = function() {
+  	strPlus = '';
+  }
+
+  return func;
+}
+
+let buffer = makeBuffer();
+
+buffer("Тест");
+buffer(" тебя не съест ");
+console.log( buffer() ); // Тест тебя не съест
+
+buffer.clear();
+
+console.log( buffer() ); // ""
+
+</script>
+
+</body>
+</html>

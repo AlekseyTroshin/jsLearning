@@ -1,0 +1,37 @@
+<!DOCTYPE html>
+<html>
+<head>
+	<title>1</title>
+	<meta charset="utf-8">
+</head>
+<body>
+
+<script>
+"use strict";
+
+var obj = {
+  className: 'open menu'
+}
+
+let addClass = (obj, name) => {
+	let clsName = obj.className.split(' ');
+
+	for(let i of clsName) {
+		if(i === name) {
+			return;
+		} 
+	}
+
+	return obj.className = clsName.concat(name).join(' ');
+}
+
+addClass(obj, 'new');
+addClass(obj, 'open');
+addClass(obj, 'me'); 
+
+console.log( obj.className );
+
+</script>
+
+</body>
+</html>

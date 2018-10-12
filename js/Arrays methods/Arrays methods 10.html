@@ -1,0 +1,37 @@
+<!DOCTYPE html>
+<html>
+<head>
+	<title>1</title>
+	<meta charset="utf-8">
+</head>
+<body>
+
+<script>
+"use strict";
+
+var arr = ["воз", "киборг", "корсет", "ЗОВ", "гробик", "костер", "сектор"];
+
+let aclean = ( arr ) => {
+	arr = arr.slice().join(',').toLowerCase().split(',');
+	let obj = {};
+
+	for(let i of arr) {
+		let j = i.split('').sort().join('');
+		obj[j] = i;
+	}
+
+	arr = [];
+
+	for(let i in obj) {
+		arr.push(obj[i]);
+	}
+
+	return arr;
+}
+
+console.log( aclean(arr) ); // "воз,киборг,корсет" или "ЗОВ,гробик,сектор"
+
+</script>
+
+</body>
+</html>

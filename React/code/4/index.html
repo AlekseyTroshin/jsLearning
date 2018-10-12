@@ -1,0 +1,79 @@
+<!DOCTYPE html>
+<html>
+<head>
+    <title></title>
+    <script src="https://npmcdn.com/react@15.3.0/dist/react.js"></script>
+    <script src="https://npmcdn.com/react-dom@15.3.0/dist/react-dom.js"></script>
+    <script src="https://npmcdn.com/babel-core@5.8.38/browser.min.js"></script>
+    <script src="https://npmcdn.com/jquery@3.1.0/dist/jquery.min.js"></script>
+    <script src="https://npmcdn.com/remarkable@1.6.2/dist/remarkable.min.js"></script>
+</head>
+<body>
+
+<div id="content"></div>
+
+<script type="text/babel">
+    'use strict';
+
+    class App extends React.Component {
+        constructor() {
+            super();
+
+            this.state = {
+                hello: true,
+                arr: [1, 2, 3, 4, 5],
+                text: ''
+            };
+        }
+
+        changeButton() {
+            this.setState({hello: !this.state.hello});
+        }
+
+        showList() {
+            const list = this.state.arr.map((item, index) => {
+                return <li key={index}>{item}</li>
+            });
+
+            this.setState({text: <ul> {list} </ul> });
+        }
+
+        render() {
+            let message = '';
+
+            if(this.state.hello) {
+                message = 'Hello2Hello'
+            }
+
+            let arr = this.state.arr.map((item, index) => {
+                return <li key={index}>{item}</li>
+            });
+
+            return (
+                <div>
+                    <p>{this.state.hello ? 'Hello' : 'Bye'}</p>
+                    <button onClick={this.changeButton.bind(this)}>change</button>
+                    <br/>
+                    <div>{message}</div>
+                    <br/>
+                    <ul>
+                        {arr}
+                    </ul>
+                    <div>
+                        <button onClick={this.showList.bind(this)}>add List</button>
+                        {this.state.text}
+                    </div>
+                </div>
+            );
+        }
+    }
+
+    ReactDOM.render(
+        <App/>,
+        document.getElementById('content')
+    );
+
+</script>
+
+</body>
+</html>

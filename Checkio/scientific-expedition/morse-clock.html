@@ -8,7 +8,62 @@
 <script>
 'use strict';
 
+function morseClock(strOut) {
+	let arr = strOut.split(':');
+	let str = '';
+	let num = 0;
 
+	for(let i = 0 ; i < arr.length; i++) {
+		if(i === 0) {
+			num = 2;
+		} else {
+			num = 3;
+		}
+
+		let a = arr[i][0];
+		let b = arr[i][1];
+		
+		if(arr[i][1] === undefined) {
+			a = 0;
+			b = arr[i][0];
+		}
+
+		str += findNum(a, num) + ' ' + findNum(b, 4);
+		if(i !== arr.length - 1) {
+			str += ' : ';
+		}
+	}
+
+	return str;
+}
+
+
+function findNum(num, dotOut) {
+	let str = '';
+	let dot = '';
+	let a = 0;
+	switch(num) {
+		case '0' : str += '.' ; break; 
+		case '1' : str += '-' ; break; 
+		case '2' : str += '-.' ; break; 
+		case '3' : str += '--' ; break; 
+		case '4' : str += '-..' ; break; 
+		case '5' : str += '-.-' ; break; 
+		case '6' : str += '--.' ; break; 
+		case '7' : str += '---' ; break; 
+		case '8' : str += '-...' ; break; 
+		case '9' : str += '-..-' ; break; 
+	}
+
+	dot = new Array(dotOut - str.length + 1).join(".");
+
+	return dot + str;
+}
+
+console.log(morseClock("10:37:49")); // == ".- .... : .-- .--- : -.. -..-"
+console.log(morseClock("21:34:56")); // == "-. ...- : .-- .-.. : -.- .--."
+console.log(morseClock("00:1:02")); // == ".. .... : ... ...- : ... ..-."
+console.log(morseClock("23:59:59")); // == "-. ..-- : -.- -..- : -.- -..-"
 
 </script>
 

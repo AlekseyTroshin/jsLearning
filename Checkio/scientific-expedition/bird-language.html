@@ -1,0 +1,42 @@
+<!DOCTYPE html>
+<html>
+<head>
+	<title></title>
+</head>
+<body>
+
+<script>
+"use strict";
+
+function translate(str) {
+	let lowerStr = str.toLowerCase();
+	let newStr = '';
+
+	for(let i = 0; i < lowerStr.length; i++) {
+		let a = lowerStr[i];
+		if(a === ' ') {
+			newStr += ' ';
+		}
+		else if(a === 'a' || a === 'e' || a === 'i' || a === 'o' || a === 'u' || a === 'y') {
+			newStr += a;
+			i += 2;
+		} else {
+			newStr += a;
+			i += 1;
+		}
+	}
+
+	return newStr;
+}
+
+
+console.log(translate("hieeelalaooo")); // == "hello"
+console.log(translate("hoooowe yyyooouuu duoooiiine")); // == "how you doin"
+console.log(translate("aaa bo cy da eee fe")); // == "a b c d e f"
+console.log(translate("sooooso aaaaaaaaa")); // == "sos aaa"
+
+
+</script>
+
+</body>
+</html>
